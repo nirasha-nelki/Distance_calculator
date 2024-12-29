@@ -1,17 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../atomic/Button";
 import TextArea from "../atomic/Textarea";
+import useLocationStore from "../../store/LocationStore";
 
 const AddressForm: React.FC = () => {
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [userLocation, setUserLocation] = useState<boolean>(false);
+  const { originLocation, setOriginLocation, destinationLocation, setDestinationLocation, isUserLocation, setIsUserLocation } = useLocationStore();
+  
 
   const handleClick = () => {
-    console.log("Source: ", origin);
-    console.log("Destination: ", destination);
-    console.log("Use my location: ", userLocation);
+
+    if (userLocation) {
+      setIsUserLocation(true);
+    } else {
+      setOriginLocation(origin);
+    }
+
+    setDestinationLocation(destination);    
+
   };
+
+  // // Watch for state changes and log updated values
+  // useEffect(() => {
+  //   console.log("Updated Origin Location: ", originLocation);
+  // }, [originLocation]);
+
+  // useEffect(() => {
+  //   console.log("Updated Destination Location: ", destinationLocation);
+  // }, [destinationLocation]);
 
   return (
     <div className="bg-white w-full h-full flex justify-center items-center rounded-sm p-4">
