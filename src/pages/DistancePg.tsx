@@ -8,7 +8,7 @@ const DistancePg: React.FC = () => {
         <div className="bg-green-200 w-full h-screen flex justify-center items-center">
             <Container>
                 <Header />
-                <div className="flex flex-row gap-2 w-full items-center">
+                <div className="flex flex-row gap-2 w-full h-full items-center justify-start mb-2">
                     <AddressForm />
                     <Distance />
 

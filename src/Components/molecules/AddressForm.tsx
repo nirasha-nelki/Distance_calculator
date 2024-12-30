@@ -1,21 +1,30 @@
 import { useState } from "react";
 import Button from "../atomic/Button";
 import TextArea from "../atomic/Textarea";
+import useLocationStore from "../../store/LocationStore";
 
 const AddressForm: React.FC = () => {
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [userLocation, setUserLocation] = useState<boolean>(false);
+  const { setOriginLocation, setDestinationLocation, setIsUserLocation } = useLocationStore();
+  
 
   const handleClick = () => {
-    console.log("Source: ", origin);
-    console.log("Destination: ", destination);
-    console.log("Use my location: ", userLocation);
+
+    if (userLocation) {
+      setIsUserLocation(true);
+    } else {
+      setOriginLocation(origin);
+    }
+
+    setDestinationLocation(destination);    
+
   };
 
   return (
-    <div className="bg-white w-full h-full flex justify-center items-center rounded-sm p-4">
-      <div className="w-full flex flex-col flex-grow gap-4">
+    <div className="w-full h-full flex justify-center rounded-sm p-4">
+      <div className="w-full flex flex-col  flex-grow gap-4">
         <div className="flex flex-col w-full gap-4 flex-grow">
           <div className="flex flex-col w-full">
             <TextArea
