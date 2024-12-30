@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../atomic/Button";
 import TextArea from "../atomic/Textarea";
 import useLocationStore from "../../store/LocationStore";
@@ -7,7 +7,7 @@ const AddressForm: React.FC = () => {
   const [origin, setOrigin] = useState<string>("");
   const [destination, setDestination] = useState<string>("");
   const [userLocation, setUserLocation] = useState<boolean>(false);
-  const { originLocation, setOriginLocation, destinationLocation, setDestinationLocation, isUserLocation, setIsUserLocation } = useLocationStore();
+  const { setOriginLocation, setDestinationLocation, setIsUserLocation } = useLocationStore();
   
 
   const handleClick = () => {
@@ -22,18 +22,9 @@ const AddressForm: React.FC = () => {
 
   };
 
-  // // Watch for state changes and log updated values
-  // useEffect(() => {
-  //   console.log("Updated Origin Location: ", originLocation);
-  // }, [originLocation]);
-
-  // useEffect(() => {
-  //   console.log("Updated Destination Location: ", destinationLocation);
-  // }, [destinationLocation]);
-
   return (
-    <div className="bg-white w-full h-full flex justify-center items-center rounded-sm p-4">
-      <div className="w-full flex flex-col flex-grow gap-4">
+    <div className="w-full h-full flex justify-center rounded-sm p-4">
+      <div className="w-full flex flex-col  flex-grow gap-4">
         <div className="flex flex-col w-full gap-4 flex-grow">
           <div className="flex flex-col w-full">
             <TextArea

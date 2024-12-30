@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { GeolocationPosition } from "../types/LocationProps";
 
 interface LocationState {
     originLocation: string;
@@ -7,6 +8,10 @@ interface LocationState {
     setDestinationLocation: (location: string) => void;
     isUserLocation: boolean;
     setIsUserLocation: (isUserLocation: boolean) => void;
+    originGeocode: GeolocationPosition | undefined;
+    setOriginGeocode: (location: GeolocationPosition) => void;
+    destinationGeocode: GeolocationPosition | undefined;
+    setDestinationGeocode: (location: GeolocationPosition) => void;
 }
 
 const useLocationStore = create<LocationState>((set) => ({
@@ -16,6 +21,10 @@ const useLocationStore = create<LocationState>((set) => ({
     setDestinationLocation: (location) => set({ destinationLocation: location }),
     isUserLocation: false,
     setIsUserLocation: (isUserLocation) => set({ isUserLocation }),
+    originGeocode: undefined,
+    setOriginGeocode: (location) => set({ originGeocode: location }),
+    destinationGeocode: undefined,
+    setDestinationGeocode: (location) => set({ destinationGeocode: location }),
 
 }));
 

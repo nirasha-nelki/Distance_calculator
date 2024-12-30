@@ -17,11 +17,9 @@ export const getDeviceLocation = async () => {
 };
 
 export const geocodeAddress = async (address: string): Promise<any | null> => {
-    // const api_key = import.meta.env.VITE_OPENCAGE_API_KEY;
-    const api_key = '1a8fbbeaffdd467db7e42bd66702aad1'; 
+
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(address)}&key=${api_key}`;
-    // const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`
-      
+          
   
     try {
       const response = await axios.get(url);
