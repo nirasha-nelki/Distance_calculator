@@ -1,6 +1,6 @@
 # distance calculator
 
-This is a simple React project that allows users to calculate the distance between two addresses and view the locations on a map. Users can also choose their current location as the starting point. The project integrates Leaflet.js for map visualization and the OpenCage API for geocoding.
+This simple React project allows users to calculate the distance between two addresses and view the locations on a map. Users can also choose their current location as the starting point. The project integrates Leaflet.js for map visualization and the OpenCage API for geocoding.
 
 ## Features
 - Enter two addresses to calculate the distance between them.
@@ -56,5 +56,9 @@ This is a simple React project that allows users to calculate the distance betwe
 - ```src/utils```: Utility functions, including API calls to OpenCage.
 - ```src/constants```: Values of the constants used.
 - ```src/types```: Different interfaces used.
-- ```src/pages```: Collection of components - renderd in the App.tsx.
+- ```src/pages```: Collection of components - rendered in the App.tsx.
+
+## How the distance is calculated
+When the user has typed the address, the relevant latitude and longitude are calculated using the OpenCage API.
+Then the distance between the two addresses is calculated by passing the latitudes and longitudes of both locations to the [Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula)
 
